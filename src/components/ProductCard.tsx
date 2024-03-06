@@ -52,7 +52,7 @@ const ProductCard = (props: Props) => {
                 <div className="flex flex-wrap justify-center lg:justify-start items-center gap-4 min-h-[40px]">
                     <p className="text-sm">{props.rating}⭐</p>
                     <p className="text-2xl font-semibold text-center">₹{props.price}</p>
-                    <Button onClick={handleAddToCart} className='hidden group-hover:block ease-in-out duration-500' size={'sm'} variant="default">{isAdded?"Added":"Add to cart"}</Button>
+                    <Button onClick={handleAddToCart} className=' group-hover:bg-black group-hover:text-white outline outline-1 bg-white text-black ease-in-out duration-500' size={'sm'} variant="default">{isAdded?"Added":"Add to cart"}</Button>
                 </div>
 
             </div>

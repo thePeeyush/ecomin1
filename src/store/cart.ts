@@ -2,6 +2,7 @@ import { create } from "zustand";
 
 interface Cart {
   cart: item[];
+  setCart(cart: item[]): void;
   addItem(item: item): void;
   setQuantity(id: string, quantity: number): void;
   removeItem(id: string): void;
@@ -11,13 +12,15 @@ interface Cart {
   getItems(): item[];
 }
 
-type item = {
+export type item = {
   id: string;
   quantity: number;
 };
 
 const useCart = create<Cart>((set, get) => ({
   cart: [],
+
+  setCart: (cart) => set({ cart }),
 
   addItem: (item) =>
     set((state) => {
@@ -44,6 +47,7 @@ const useCart = create<Cart>((set, get) => ({
   isInCart: (id) => get().cart.some((item) => item.id === id),
 
   getItems: () => get().cart,
+
 }));
 
 export default useCart;

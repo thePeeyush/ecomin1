@@ -33,9 +33,10 @@ const Header = () => {
               </Avatar>
             </PopoverTrigger>
             <PopoverContent>
-              <div className="flex gap-4 items-center">
+              <div className='flex flex-col gap-4'>
               <p>{username}</p>
-              <Button onClick={() => signOut()} variant={'outline'}>signOut</Button>
+              <Link className='hover:underline' href={'/orders'}>My Orders</Link>
+              <Button onClick={() => signOut()} variant={'outline'}>SignOut</Button>
               </div>
             </PopoverContent>
           </Popover>
@@ -45,7 +46,7 @@ const Header = () => {
   }
   return (
     <div className="flex justify-between w-full px-4 border-b items-center fixed backdrop-blur-lg">
-      <Link href={'/'}><Image src="/txdlogo.svg" alt="logo" width={100} height={100} className='w-16 h-16' /></Link>
+      <Link href={'/'}><Image src="/logo.jpg" alt="logo" width={100} height={100} className='w-16 h-16' /></Link>
       <div className='flex justify-center items-center gap-4'>
         <Link href={'/cart'}><BsCart3 size={30} /></Link>
         <Button onClick={() => signIn()} variant={'outline'}>signIn</Button>

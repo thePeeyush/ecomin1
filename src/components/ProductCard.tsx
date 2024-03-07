@@ -42,17 +42,19 @@ const ProductCard = (props: Props) => {
 
 
     return (
-        <div className="flex p-2 rounded-md max-w-md outline outline-1 outline-gray-200 group">
-            <div className="w-56">
-            <Image src={props.src} alt={props.alt} width={200} height={200} className=" w-full h-full object-cover rounded-lg" />
+        <div className="flex rounded-md max-w-md md:outline outline-1 border-b md:border-none outline-gray-200 group overflow-hidden">
+            <div className="w-56 m-2 mr-0 lg:m-0">
+            <Image src={props.src} alt={props.alt} width={200} height={200} className=" w-full h-full object-cover rounded-md md:rounded-none" />
             </div>
-            <div className="ml-4 flex flex-col flex-wrap w-full gap-2 justify-between md:gap-4">
-                <h3 className="text-lg font-semibold">{props.title}</h3>
-                <p className="text-sm">{props.description}</p>
-                <div className="flex flex-wrap justify-center lg:justify-start items-center gap-4 min-h-[40px]">
-                    <p className="text-sm">{props.rating}⭐</p>
-                    <p className="text-2xl font-semibold text-center">₹{props.price}</p>
-                    <Button onClick={handleAddToCart} className=' group-hover:bg-black group-hover:text-white outline outline-1 bg-white text-black ease-in-out duration-500' size={'sm'} variant="default">{isAdded?"Added":"Add to cart"}</Button>
+            <div className="ml-4 flex flex-col flex-wrap w-full gap-2 justify-between md:gap-4 p-2">
+                <div>
+                <h3 className="text-lg font-semibold pb-3">{props.title}</h3>
+                <p className="text-sm text-gray-600">{props.description}</p>
+                </div>
+                <div className="flex justify-between items-center gap-4 min-h-[40px]">
+                    <p className="text-xs md:text-sm text-gray-500">{props.rating}⭐</p>
+                    <p className="text-sm md:text-2xl font-semibold text-center">₹{props.price}</p>
+                    <Button onClick={handleAddToCart} className={` ${isAdded?"outline-none group-hover:bg-transparent cursor-default":"outline outline-gray-400 group-hover:bg-black group-hover:text-white"} outline-1  bg-white text-black ease-in-out duration-500 text-xs md:text-sm`} size={'sm'} variant="default">{isAdded?"✅ Added":"Add to cart"}</Button>
                 </div>
 
             </div>

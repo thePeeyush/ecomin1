@@ -19,7 +19,7 @@ const Orders = () => {
     <div className="flex flex-col p-4 items-center gap-4 pb-48 px-4">
         {
           isEmpty() ? (
-            <h1 className="text-2xl">No orders</h1>
+            <h1 className="text-2xl mt-24">No orders</h1>
           ) : (
             orders.map((item) => {
               const { id } = item

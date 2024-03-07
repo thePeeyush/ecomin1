@@ -1,6 +1,6 @@
 'use client'
 import CartItem from "@/components/CartItem";
-import useCart, { item } from "@/store/cart";
+import useCart from "@/store/cart";
 import data from '@/data.json'
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
@@ -35,6 +35,7 @@ export default function Cart() {
   }
 
   const transferCart = () => {
+    router.push('/orders')
     cart.map((item) => {
       const data = getItem(item.id)
       if (!data) return
@@ -46,7 +47,6 @@ export default function Cart() {
       })
     })
     clearCart()
-    router.push('/orders')
   }
 
   const calcTotal = () => {
@@ -64,12 +64,12 @@ export default function Cart() {
     const data = await checkout({ amount: total })
     console.log(data);
     const options = {
-      "key": 'rzp_test_oxn1TTL7AnDtI4',
+      "key": process.env.NEXT_PUBLIC_RAZORPAY_ID,
       "amount": data?.order?.amount,
       "currency": "INR",
-      "name": "AirShare",
-      "description": "Test Transaction",
-      "image": "https://example.com/your_logo",
+      "name": "TXD",
+      "description": "TXD Order Payment",
+      "image": "https://i.postimg.cc/cJx1nwnd/logo.jpg",
       "order_id": data?.order?.id,
       handler: (Response: any) => {
         const verified = verifyPayment(Response)
@@ -95,7 +95,7 @@ export default function Cart() {
       <div className="flex flex-col p-4 items-center gap-4 pb-48 px-4">
         {
           isEmpty() ? (
-            <h1 className="text-2xl">🛒Cart is Empty</h1>
+            <h1 className="text-2xl mt-24">🛒Cart is Empty</h1>
           ) : (
             cart.map((item) => {
               const { id } = item

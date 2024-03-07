@@ -15,7 +15,7 @@ const OrderItem = (props: Props) => {
     return (
         <div className="flex items-center w-full justify-between max-w-2xl mx-auto">
             <div className="flex items-center gap-2">
-                <Image src={img} alt={alt || title} width={100} height={100} className='rounded-md w-12 h-12' />
+                <Image src={img} alt={alt || title} width={100} height={100} className='rounded-md w-12 h-12 object-cover' />
                 <h1 className='text-md md:text-base  overflow-hidden text-ellipsis whitespace-nowrap'>{title}</h1>
             </div>
             <div className="flex items-center gap-2">
